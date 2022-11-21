@@ -3,5 +3,4 @@ class Dev < ApplicationRecord
   has_many :bookings
 
   validates :name, presence: true
-  validates :available, default: false
 end
