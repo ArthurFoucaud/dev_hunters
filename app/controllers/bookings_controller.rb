@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.user = current_user
     @booking.dev = @dev
     if @booking.save
       redirect_to dev_path(@dev)

@@ -13,5 +13,9 @@
 </div>
 
 <div>
+    <%= link_to "Buy a new dev",  new_dev_booking_path(params[:id])%>
+</div>
+
+<div>
   <%= link_to "delete this Dev", dev_path(@dev), class: "btn btn-flat", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this dev?" } %>
 </div>
