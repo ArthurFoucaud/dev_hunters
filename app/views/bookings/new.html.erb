@@ -1,1 +1,7 @@
-<h1>this is the booking new view</h1>
+<h1>Do you want to book him ?</h1>
+<%= simple_form_for [@dev, @booking] do |f| %>
+  <%# <%= f.input :content %>
+  <%= f.input :starting_time %>
+  <%= f.input :ending_time %>
+  <%= f.submit "validate", class: "btn btn-success" %>
+<% end %>

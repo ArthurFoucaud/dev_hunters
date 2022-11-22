@@ -10,10 +10,11 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.dev = @dev
+    @booking.user = current_user
     if @booking.save
       redirect_to dev_path(@dev)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
