@@ -2,11 +2,17 @@
 <h1>This the  devs index view</h1>
 
 <div class="container">
-  <div class="col-4">
+  <div class = 'row'>
     <%@devs.each do |dev|%>
-      <%= link_to dev.name, dev_path(dev) %>
-      <%= dev.skill%>
-      <img src="<%=dev.photo_url%>" alt="avatar">
+      <div class="col-4">
+        <%= link_to dev.name, dev_path(dev) %>
+        <%= dev.skill%>
+        <% if dev.photo.attached? %>
+          <%= cl_image_tag(dev.photo.key, width: 400, height: 300, crop: :fill) %>
+        <% else %>
+          <img src="<%=dev.photo_url%>" alt="avatar">
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
