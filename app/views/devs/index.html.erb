@@ -1,4 +1,6 @@
+<%= render "shared/navbar" %>
 <h1>This the  devs index view</h1>
+
 <div class="container">
   <div class="col-4">
     <%@devs.each do |dev|%>
@@ -11,3 +13,5 @@
 
 <%= link_to "Add a new dev", new_dev_path%>
 <%= render "pages/footer"%>
+
+
