@@ -4,4 +4,7 @@
   <div class="footer-copyright">
     This footer is made with <i class="fas fa-heart"></i> by the Dev Hunters
   </div>
+
+  <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete},
+  class: "dropdown-item" %>
 </div>

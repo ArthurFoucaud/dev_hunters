@@ -15,8 +15,9 @@ class DevsController < ApplicationController
   def create
     @dev = Dev.new(dev_params)
     @dev.user = current_user
+    # raise
     if @dev.save
-      redirect_to dev_path(@dev)
+     redirect_to dev_path(@dev)
     else
       render :new, status: :unprocessable_entity
     end
