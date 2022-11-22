@@ -4,11 +4,11 @@
 <div class="container">
   <div class="col-4">
     <%@devs.each do |dev|%>
-      <%= dev.name%>
+      <%= link_to dev.name, dev_path(dev) %>
       <%= dev.skill%>
       <img src="<%=dev.photo_url%>" alt="avatar">
-    <%end%>
+    <% end %>
   </div>
 </div>
 
-<%= link_to "Add a new dev", new_dev_path%>
+<%= link_to "Add a new dev", new_dev_path if policy(Dev).new? %>
