@@ -1,2 +1,14 @@
 <h1>this is the devs new</h1>
 <%= render "shared/navbar" %>
+<div class="container">
+  <div class="col-4 offset-4">
+    <%= simple_form_for(@dev) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :skill %>
+      <%= f.input :photo_url %>
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+
