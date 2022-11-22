@@ -1,5 +1,5 @@
 .footer {
-  background: purple;
+  background: #141346;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,7 +9,7 @@
 }
 .footer-links {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 }
 .footer-links a {
   color: black;
@@ -22,5 +22,5 @@
   opacity: 1;
 }
 .footer .fa-heart {
-  color: #D23333;
+  color: #E683FC;
 }

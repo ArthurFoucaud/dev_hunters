@@ -1,1 +1,114 @@
 // Specific CSS for your home-page
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  background-image: url("background2.jpg");
+}
+
+.card-trip-infos-1 {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  background-image: url("magnifying-glass.png");
+  width: 500px;
+  height: 500px;
+}
+
+.card-trip-infos-2 {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  background-image: url("developer.png");
+  width: 500px;
+  height: 500px;
+}
+
+.card-trip-infos-3 {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  background-image: url("calendar.png");
+  width: 475px;
+  height: 500px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  background: rgb(20,19,70);
+  background: linear-gradient(0deg, rgba(20,19,70,1) 0%, rgba(0,0,0,1) 100%);
+}
+
+.cards h2 {
+  font-size: 35px;
+  color: white;
+  opacity: .9;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cards p {
+  font-size: 20px;
+  color: white;
+  opacity: .9;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 55px;
+  font-weight: bold;
+  font-family: 'JetBrains Mono', monospace;
+
+}
+
+.banner p {
+  font-size: 35px;
+  color: white;
+  opacity: .9;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.typewriter {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid #E683FC ; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation:
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+.btn-gradient {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: linear-gradient(#E683FC, #E683FC);
+  transition: background 0.3s ease;
+  border: 1px solid rgba(20,19,70,1);
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(#147EFF, #0F67DA);
+  color: white;
+}
