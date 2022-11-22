@@ -13,6 +13,7 @@
 </div>
 
 <div>
+
   <% if policy(@dev).edit? %>
     <%= link_to "edit this dev", edit_dev_path(@dev) %> |
   <% end %>
@@ -20,4 +21,6 @@
 
 <div>
   <%= button_to "delete this Dev", @dev, class: "btn btn-danger", method: :delete if policy(@dev).destroy? %>
+
+  <%= link_to "Book this Dev", new_dev_booking_path(@dev), class: "btn btn-primary"  %>
 </div>
