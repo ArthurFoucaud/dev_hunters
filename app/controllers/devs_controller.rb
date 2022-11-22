@@ -2,32 +2,36 @@ class DevsController < ApplicationController
   before_action :set_dev, only: [:show, :edit, :update, :destroy]
 
   def index
-    @devs = Dev.all
+    @devs = policy_scope(Dev)
   end
 
   def show
+    authorize @dev
   end
 
   def new
     @dev = Dev.new
+    authorize @dev
   end
 
   def create
     @dev = Dev.new(dev_params)
     @dev.user = current_user
-    # raise
+    authorize @dev
     if @dev.save
-     redirect_to dev_path(@dev)
+      redirect_to dev_path(@dev)
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
+    authorize @dev
   end
 
   def update
     @dev.update(dev_params)
+    authorize @dev
     if @dev.save
       redirect_to dev_path(@dev)
     else
@@ -37,6 +41,7 @@ class DevsController < ApplicationController
 
   def destroy
     @dev.destroy
+    authorize @dev
     redirect_to devs_path, status: :see_other
   end
 
