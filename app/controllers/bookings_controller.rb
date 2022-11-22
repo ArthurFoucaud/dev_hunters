@@ -11,12 +11,11 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    # @booking.user = current_user
     @booking.dev = @dev
     @booking.user = current_user
     authorize @booking
     if @booking.save
-      redirect_to dev_bookings_path(@dev)
+      redirect_to dev_path(@dev)
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,7 +24,7 @@ class BookingsController < ApplicationController
   def destroy
     authorize @booking
     @booking.destroy
-    redirect_to dev_path(@booking.dev), status: :see_other
+    redirect_to bookings_path, status: :see_other
   end
 
   private
