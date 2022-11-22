@@ -1,23 +1,29 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: :destroy
   before_action :set_dev, only: [:new, :create]
-
+  def index
+    @bookings = policy_scope(Booking)
+  end
   def new
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
+    # @booking.user = current_user
     @booking.dev = @dev
     @booking.user = current_user
+    authorize @booking
     if @booking.save
-      redirect_to dev_path(@dev)
+      redirect_to dev_bookings_path(@dev)
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
+    authorize @booking
     @booking.destroy
     redirect_to dev_path(@booking.dev), status: :see_other
   end

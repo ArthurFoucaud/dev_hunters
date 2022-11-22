@@ -3,6 +3,8 @@ class DevsController < ApplicationController
 
   def index
     @devs = policy_scope(Dev)
+
+    @bookings = current_user.bookings
   end
 
   def show
