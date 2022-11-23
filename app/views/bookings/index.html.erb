@@ -3,6 +3,7 @@
   <%= booking.dev.name %>
   <%= booking.starting_time %>
   <%= booking.ending_time %>
+  <%= booking.status_seller %>
   <div>
     <%= button_to "delete this booking", dev_booking_path(booking.dev, booking), class: "btn btn-danger", method: :delete if policy(booking).destroy? %>
   </div>
