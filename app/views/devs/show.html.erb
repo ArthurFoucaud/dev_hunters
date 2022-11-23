@@ -1,28 +1,26 @@
-<h1>this the devs show</h1>
 <%= render "shared/navbar" %>
-
-<div>
-  <%= link_to "Back", devs_path, class: "btn btn-flat" %>
+<body>
+<div class="backgrounds">
+  <%= link_to "Back", devs_path, class: "btn-primary" %>
 </div>
 
-<div>
-  <%= @dev.name %> <br>
-  <%= @dev.skill %> <br>
-  <% if @dev.photo.attached? %>
+
+<div class="card-product">
+    <% if @dev.photo.attached? %>
     <%= cl_image_tag(@dev.photo.key, width: 400, height: 300, crop: :fill) %>
   <% else %>
     <img src="<%=@dev.photo_url%>" alt="avatar">
   <% end %>
-</div>
-
-<div>
-  <% if policy(@dev).edit? %>
-    <%= link_to "edit this dev", edit_dev_path(@dev) %>
+  <div class="card-product-infos">
+    <h2>name: <%= @dev.name %></h2>
+    <p>skills: <%= @dev.skill%></p>
+  </div>
+  <div class="card-product-edit">
+  <%= link_to "Book this Dev", new_dev_booking_path(@dev), class: "btn-primary"  %>
+    <% if policy(@dev).edit? %>
+    <%= link_to "Edit this dev", edit_dev_path(@dev), class: "btn-primary" %>
   <% end %>
+    <%= button_to "Delete this Dev", @dev, class: "btn-delete", method: :delete if policy(@dev).destroy? %>
+  </div>
 </div>
-
-<div>
-  <%= button_to "delete this Dev", @dev, class: "btn btn-danger", method: :delete if policy(@dev).destroy? %>
-
-  <%= link_to "Book this Dev", new_dev_booking_path(@dev), class: "btn btn-primary"  %>
-</div>
+</body>

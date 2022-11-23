@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: #141346;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +9,20 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.nav-link {
+  font-size: 20px;
+  color: white;
+  opacity: .9;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.nav-link:hover {
+  color: #E683FC;
+}
+
+.nav-link:active {
+  color: #E683FC;
 }
