@@ -15,6 +15,7 @@ class DevsController < ApplicationController
 
   def show
     authorize @dev
+    @booking = Booking.new
   end
 
   def new
