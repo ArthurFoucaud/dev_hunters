@@ -13,3 +13,12 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
+
+.card-box {
+  border-radius: 15px;
+  box-shadow: 6px 6px 15px #e683fc;
+
+  &:hover{
+    box-shadow: inset 6px 6px 15px #E683FC;
+  }
+}
