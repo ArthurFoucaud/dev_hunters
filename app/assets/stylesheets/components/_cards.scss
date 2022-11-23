@@ -1,0 +1,62 @@
+.card-product {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+}
+
+.card-product img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.card-product h2 {
+  font-size: 45px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product p {
+  font-size: 25px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-product-infos .card-product-edit {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+.btn-delete {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: linear-gradient(#E683FC, #E683FC);
+  transition: background 0.3s ease;
+  border: 1px solid rgba(20,19,70,1);
+}
+
+.btn .btn-delete:hover {
+  background: linear-gradient(#147EFF, #0F67DA);
+  color: white;
+}
