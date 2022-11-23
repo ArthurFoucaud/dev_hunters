@@ -1,12 +1,15 @@
 <h1>this is index bookings</h1>
-  <% @bookings.each do |booking| %>
-  <%= booking.dev.name %>
-  <%= booking.starting_time %>
-  <%= booking.ending_time %>
-  <div>
-    <%= button_to "delete this booking", dev_booking_path(booking.dev, booking), class: "btn btn-danger", method: :delete if policy(booking).destroy? %>
+<% @bookings.each do |booking| %>
+  <div class="card-product flex-wrap p-30">
+      <img src="<%=booking.dev.photo_url%>"/>
+      <div class="card-product-infos">
+        <h2> <%= booking.dev.name %></h2>
+        <p> <%= booking.starting_time %></p>
+        <p> <%= booking.ending_time %></p>
+        <%= button_to "delete this booking", dev_booking_path(booking.dev, booking), class: "btn btn-danger", method: :delete if policy(booking).destroy? %>
+      </div>
   </div>
-<%end%>
+<%end %>
 
 
 <%= link_to "Back to main index", devs_path%>
