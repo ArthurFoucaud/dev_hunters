@@ -3,6 +3,12 @@ class DevsController < ApplicationController
 
   def index
     @devs = policy_scope(Dev)
+    @markers = @devs.geocoded.map do |dev|
+      {
+        lat: dev.latitude,
+        lng: dev.longitude
+      }
+    end
 
     @bookings = current_user.bookings
   end
