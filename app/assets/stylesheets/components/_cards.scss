@@ -1,15 +1,17 @@
 .card-product {
   overflow: hidden;
-  height: 120px;
+  height: 300px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .card-product img {
   height: 100%;
-  width: 120px;
+  min-height: 300px;
+  min-width: 300px;
   object-fit: cover;
 }
 
@@ -17,6 +19,7 @@
   font-size: 45px;
   font-weight: bold;
   margin: 0;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .card-product p {
@@ -25,26 +28,36 @@
   opacity: .7;
   margin-bottom: 0;
   margin-top: 8px;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .card-product .card-product-infos {
   padding: 16px;
+  align-items: center;
 }
 
-.card-product .card-product-infos {
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
+// .card-product .card-product-edit {
+//   right: 16px;
+//   top: -20px;
+//   width: 40px;
+// }
+
+.btn-primary {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: linear-gradient(#E683FC, #E683FC);
+  transition: background 0.3s ease;
+  border: 1px solid rgba(20,19,70,1);
+  font-family: 'JetBrains Mono', monospace;
 }
 
-.card-product-infos .card-product-edit {
-  position: absolute;
-  right: 16px;
-  top: -20px;
-  width: 40px;
+.btn-primary:hover {
+  background: linear-gradient(#147EFF, #0F67DA);
+  color: white;
 }
+
 
 .btn-delete {
   color: white;
@@ -54,9 +67,10 @@
   background: linear-gradient(#E683FC, #E683FC);
   transition: background 0.3s ease;
   border: 1px solid rgba(20,19,70,1);
+  font-family: 'JetBrains Mono', monospace;
 }
 
-.btn .btn-delete:hover {
+.btn-delete:hover {
   background: linear-gradient(#147EFF, #0F67DA);
   color: white;
 }
