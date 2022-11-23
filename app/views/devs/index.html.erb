@@ -6,23 +6,31 @@
 <div class="container py-5">
   <div class = 'row my-2'>
     <%@devs.each do |dev|%>
-      <div class="col-4 mb-4" data-aos="zoom-in">
-        <div class="bg-white rounded-lg shadow h-100">
-          <div class="img-container p-3">
-          <div class ="d-flex justify-content-center ">
-              <% if dev.photo.attached? %>
-                <%= cl_image_tag(dev.photo.key) %>
-              <% else %>
-                <img src="<%=dev.photo_url%>" alt="avatar">
-              <% end %>
+      <div class="col-4 mb-4 truc" data-aos="zoom-in">
+        <div class="card-box bg-white rounded-lg h-100">
+          <%= link_to dev_path(dev) do %>
+            <div class="img-container p-3">
+              <div class ="d-flex justify-content-center ">
+                  <% if dev.photo.attached? %>
+                    <%= cl_image_tag(dev.photo.key) %>
+                  <% else %>
+                    <img src="<%=dev.photo_url%>" alt="avatar">
+                  <% end %>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center p-3">
+                <%= dev.name %>
+              </div>
+            <div class="d-flex justify-content-center p-3">
+              <%= dev.skill%>
             </div>
-          </div>
-          <div class="d-flex justify-content-center p-3">
-            <%= link_to dev.name, dev_path(dev) %>
-          </div>
-          <div class="d-flex justify-content-center p-3">
-            <%= dev.skill%>
-          </div>
+             <div class="d-flex justify-content-center p-3">
+              <%= dev.address%>
+            </div>
+             <div class="d-flex justify-content-center p-3">
+              <%= dev.price %>
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>
