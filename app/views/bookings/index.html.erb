@@ -8,6 +8,7 @@
         <h3> <%= booking.dev.name %></h3>
         <p> <%= booking.starting_time %></p>
         <p> <%= booking.ending_time %></p>
+        <p> <%= booking.status_seller %> </p>
         <%= button_to "delete this booking", dev_booking_path(booking.dev, booking), class: "btn btn-danger", method: :delete if policy(booking).destroy? %>
       </div>
   </div>
