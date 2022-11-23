@@ -13,11 +13,17 @@ Dev.destroy_all
 User.destroy_all
 puts "Seedings slaves"
 user = User.create!(email:"default@default.com",password: "123456")
-dev_1 = Dev.new(name: "Romain Delimal", skill: "Ruby", user: user)
+user1 = User.create!(email:"arthur@default.com",password: "123456")
+dev_1 = Dev.new(name: "Romain Delimal", skill: "Ruby", user: user1)
 dev_1.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/115033783?v=4"), filename: "avatar.png", content_type: "image/png")
 dev_1.save!
-Dev.create(name: "Mathieu Trancoso", skill: "Full-stack", photo_url: "https://avatars.githubusercontent.com/u/54006203?v=4", user: user)
+Dev.create(name: "Mathieu Trancoso", skill: "Full-stack", photo_url: "https://avatars.githubusercontent.com/u/54006203?v=4", user: user1)
 Dev.create(name: "Joël Irmiahu", skill: "Not-much", photo_url: "https://avatars.githubusercontent.com/u/115413668?v=4", user: user)
 Dev.create(name: "Pierre Coppermann", skill: "Ruby, Python, JS, React", photo_url: "https://avatars.githubusercontent.com/u/96295313?v=4", user: user)
 Dev.create(name: "Nicolas Bischoff", skill: "Ruby, JS, React", photo_url: "https://avatars.githubusercontent.com/u/55391122?v=4", user: user)
+Dev.create(name: "Timothée Régis", skill: "Ruby, JS, React", photo_url: "https://avatars.githubusercontent.com/u/59280703?v=4", user: user1)
+Dev.create(name: "Diane Johnston Roussillon", skill: "Html", photo_url: "https://avatars.githubusercontent.com/u/43373459?v=4", user: user1)
+Dev.create(name: "Gautier David", skill: "React", photo_url: "https://avatars.githubusercontent.com/u/103845189?v=4", user: user)
+Dev.create(name: "Thibaut Roland", skill: "CSS", photo_url: "https://avatars.githubusercontent.com/u/115095838?v=4", user: user1)
+Dev.create(name: "Gaspard Fauchille", skill: "C", photo_url: "https://avatars.githubusercontent.com/u/114876925?v=4", user: user)
 puts "Seeds successfully seeded"
