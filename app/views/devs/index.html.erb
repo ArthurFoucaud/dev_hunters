@@ -34,6 +34,8 @@
         </div>
       </div>
     <% end %>
+  </div>
+ 
     </div>
     <div class="d-flex justify-content-center p-3">
       <% if policy(Dev).new? %>
@@ -42,4 +44,9 @@
         </div>
       <%end%>
        </div>
+  <div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
