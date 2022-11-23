@@ -106,9 +106,19 @@
   background: linear-gradient(#E683FC, #E683FC);
   transition: background 0.3s ease;
   border: 1px solid rgba(20,19,70,1);
+  text-decoration: none;
 }
 
 .btn-gradient:hover {
   background: linear-gradient(#147EFF, #0F67DA);
+  color: white;
+}
+
+.btn-index{
+  color: white;
+  text-decoration: none;
+}
+
+.btn-index:hover{
   color: white;
 }
