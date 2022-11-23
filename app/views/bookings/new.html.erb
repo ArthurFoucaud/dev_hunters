@@ -1,7 +1,24 @@
 <h1>Do you want to book him ?</h1>
-<%= simple_form_for [@dev, @booking] do |f| %>
+<%= simple_form_for [@dev, @booking],
+                    html: {
+                      data: {
+                        controller: 'flatpickr'
+                      }
+                    } do |f| %>
   <%# <%= f.input :content %>
-  <%= f.input :starting_time %>
-  <%= f.input :ending_time %>
+  <%= f.input :starting_time,
+               as: :string,
+               input_html: {
+                data: {
+                  flatpickr_target: 'startDateInput',
+                }
+              }%>
+  <%= f.input :ending_time,
+              as: :string,
+              input_html: {
+                data: {
+                  flatpickr_target: 'endDateInput'
+                }
+              } %>
   <%= f.submit "validate", class: "btn btn-success" %>
 <% end %>
