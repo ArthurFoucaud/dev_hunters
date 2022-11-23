@@ -1,10 +1,10 @@
-<h1>this is the devs new</h1>
 <%= render "shared/navbar" %>
 <div class="container">
-  <div class="col-4 offset-4">
+  <div class="col-4 offset-4 my-5 pb-5">
+    <h2 class="text-center">Enter your dev's information</h2>
     <%= simple_form_for(@dev) do |f| %>
-      <%= f.input :name %>
-      <%= f.input :skill %>
+      <%= f.input :name, :placeholder => "Your dev's name" %>
+      <%= f.input :skill, :placeholder => "Your dev's language(s)" %>
       <%= f.input :photo, as: :file %>
       <%= f.submit class: 'btn btn-primary' %>
     <% end %>
