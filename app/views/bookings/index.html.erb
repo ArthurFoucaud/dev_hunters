@@ -1,15 +1,18 @@
+<%= render "shared/navbar" %>
 <h1>this is index bookings</h1>
-<% @bookings.each do |booking| %>
-  <div class="card-product flex-wrap p-30">
+<div class="container">
+  <% @bookings.each do |booking| %>
+  <div class="card-product-bookings">
       <img src="<%=booking.dev.photo_url%>"/>
       <div class="card-product-infos">
-        <h2> <%= booking.dev.name %></h2>
+        <h3> <%= booking.dev.name %></h3>
         <p> <%= booking.starting_time %></p>
         <p> <%= booking.ending_time %></p>
         <%= button_to "delete this booking", dev_booking_path(booking.dev, booking), class: "btn btn-danger", method: :delete if policy(booking).destroy? %>
       </div>
   </div>
-<%end %>
+  <%end %>
 
+</div>
 
 <%= link_to "Back to main index", devs_path%>
