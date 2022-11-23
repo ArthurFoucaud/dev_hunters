@@ -14,6 +14,7 @@
   <div class="card-product-infos">
     <h2>name: <%= @dev.name %></h2>
     <p>skills: <%= @dev.skill%></p>
+    <p>price: <%= @dev.price.to_i%> $ per day</p>
   </div>
   <div class="card-product-edit">
   <%= link_to "Book this Dev", new_dev_booking_path(@dev), class: "btn-primary"  %>
