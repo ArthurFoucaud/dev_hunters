@@ -1,7 +1,6 @@
-<h1>this the devs show</h1>
 <%= render "shared/navbar" %>
-
-<div>
+<body>
+<div class="backgrounds">
   <%= link_to "Back", devs_path, class: "btn-primary" %>
 </div>
 
@@ -13,14 +12,15 @@
     <img src="<%=@dev.photo_url%>" alt="avatar">
   <% end %>
   <div class="card-product-infos">
-    <h2><%= @dev.name %></h2>
-    <p><%= @dev.skill%></p>
+    <h2>name: <%= @dev.name %></h2>
+    <p>skills: <%= @dev.skill%></p>
   </div>
   <div class="card-product-edit">
   <%= link_to "Book this Dev", new_dev_booking_path(@dev), class: "btn-primary"  %>
     <% if policy(@dev).edit? %>
-    <%= link_to "Edit this dev", edit_dev_path(@dev), class: "btn-delete" %>
+    <%= link_to "Edit this dev", edit_dev_path(@dev), class: "btn-primary" %>
   <% end %>
-    <%= link_to "Delete this Dev", @dev, class: "btn-delete", method: :delete if policy(@dev).destroy? %>
+    <%= button_to "Delete this Dev", @dev, class: "btn-delete", method: :delete if policy(@dev).destroy? %>
   </div>
 </div>
+</body>
