@@ -2,7 +2,7 @@
   background-size: cover;
   background-position: center;
   object-fit: cover;
-  height: 180px;
+  height: 140px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,9 +16,13 @@
 
 .card-box {
   border-radius: 15px;
-  box-shadow: 6px 6px 15px #e683fc;
+  box-shadow: 6px 6px 15px #a159b1;
 
   &:hover{
-    box-shadow: inset 6px 6px 15px #E683FC;
+    box-shadow: inset 6px 6px 15px #a159b1;
+  }
+
+  & a {
+    color: black !important;
   }
 }
