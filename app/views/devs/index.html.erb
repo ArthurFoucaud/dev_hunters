@@ -13,7 +13,7 @@
     <%end%>
   </div>
   <div class = 'big-container d-flex'>
-    <div class = 'container row'>
+    <div class = 'container row w-50 m-3 p-5'>
       <%@devs.each do |dev|%>
         <div class = 'col-12'>
           <%= link_to dev_path(dev) do %>
@@ -47,7 +47,7 @@
     <div data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-    id='map'>
+    id='map' class='w-50 m-3 p-5'>
     </div>
   </div>
 </div>
