@@ -15,7 +15,7 @@ puts "Seedings slaves"
 user = User.create!(email:"default@default.com",password: "123456")
 user1 = User.create!(email:"arthur@default.com",password: "123456")
 dev_1 = Dev.new(name: "Romain Delimal", skill: "Ruby", price: 60, address:"Bibliothèque François Mitterand", user: user1)
-dev_1.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/115033783?v=4"), filename: "avatar.png", content_type: "image/png")
+dev_1.photo.attach(io: URI.open("https://avatars.githubusercontent.com/u/115033783?v=4"), filename: "avatar3.png", content_type: "image/png")
 dev_1.save!
 Dev.create(name: "Mathieu Trancoso", skill: "Full-stack", photo_url: "https://avatars.githubusercontent.com/u/54006203?v=4", price: 200, address:"68 Avenue Parmentier Paris", user: user1)
 Dev.create(name: "Joël Irmiahu", skill: "Not-much", photo_url: "https://avatars.githubusercontent.com/u/115413668?v=4", price: 0.9, address:"Rue de la Jonction, 58300 Decize", user: user)
