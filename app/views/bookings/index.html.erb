@@ -14,7 +14,7 @@
   <div class="d-flex">
     <section>
       <% @bookings.each do |booking| %>
-        <div class="card-product-bookings">
+        <div class="card-product-bookings d-flex">
             <img src="<%=booking.dev.photo_url%>"/>
             <div class="card-product-infos">
               <h3> <%= booking.dev.name %></h3>
@@ -22,7 +22,9 @@
               <p> <%= booking.ending_time %></p>
               <p> <%= booking.status_seller %> </p>
               <p> Day price:<%= booking.dev.price %> € </p>
-              <%= button_to "delete this booking", dev_booking_path(booking.dev, booking), class: "btn btn-danger", method: :delete if policy(booking).destroy? %>
+              <button>
+                <%= link_to "", booking_path(booking), class: "fa-regular fa-trash-can", data: { turbo_method: :delete}%>
+              </button>
             </div>
         </div>
       <%end %>
