@@ -2,15 +2,17 @@
 
 
 <div class="main-container p-5">
-  <div class = "d-flex justify-content-center">
-    <h1>All our Devs</h1>
-  </div>
-  <div class="d-flex justify-content-center p-3">
-    <% if policy(Dev).new? %>
-      <div class="btn btn-gradient " >
-        <%= link_to "Add a new dev", new_dev_path, class:"btn-index" %>
-      </div>
-    <%end%>
+  <div class=' m-3 px-4 d-flex justify-content-between'>
+    <div>
+      <h1>All our Devs</h1>
+    </div>
+    <div>
+      <% if policy(Dev).new? %>
+        <div class="btn btn-primary " >
+          <%= link_to "Add a new dev", new_dev_path, class:"btn-index" %>
+        </div>
+      <%end%>
+    </div>
   </div>
   <div class = 'big-container d-flex'>
     <div class = 'container row w-50 m-3'>
@@ -51,7 +53,7 @@
     <div data-controller="map"
       data-map-markers-value="<%= @markers.to_json %>"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-      id='map'>
+      id='map' class="w-50 m-3">
     </div>
   </div>
 </div>
