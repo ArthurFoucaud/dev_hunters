@@ -1,7 +1,15 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: #141346;
+  .fa-solid{
+    color: white;
+  }
+
+  .fa-solid:hover {
+    color: #E683FC;
+  }
 }
+
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
@@ -25,4 +33,10 @@
 
 .nav-link:active {
   color: #E683FC;
+}
+
+.font-search {
+  #search-fly-wrap {
+  display: none;
+}
 }
