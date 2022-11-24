@@ -36,11 +36,11 @@
   align-items: center;
 }
 
-// .card-product .card-product-edit {
-//   right: 16px;
-//   top: -20px;
-//   width: 40px;
-// }
+.card-product .card-product-edit {
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
 
 .btn-primary {
   color: white;
@@ -117,6 +117,7 @@
   padding: 16px;
   align-items: center;
 }
+
 
 .card-product-bookings .card-product-infos .price{
   color: green !important;
