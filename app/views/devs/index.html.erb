@@ -1,52 +1,52 @@
 <%= render "shared/navbar" %>
 
-<div class="container py-5 w-75">
+<div class="main-container p-5">
   <div class = "d-flex justify-content-center">
-    <h1>All our hunters</h1>
+    <h1>All our Devs</h1>
   </div>
-  <div class = 'row my-2'>
-    <%@devs.each do |dev|%>
-      <div class="col-4 mb-4 truc" data-aos="zoom-in">
-        <div class="card-box bg-white rounded-lg h-100">
+  <div class="d-flex justify-content-center p-3">
+    <% if policy(Dev).new? %>
+      <div class="btn btn-gradient " >
+        <%= link_to "Add a new dev", new_dev_path, class:"btn-index" %>
+      </div>
+    <%end%>
+  </div>
+  <div class = 'big-container d-flex'>
+    <div class = 'container row'>
+      <%@devs.each do |dev|%>
+        <div class = 'col-12'>
           <%= link_to dev_path(dev) do %>
-            <div class="img-container p-3">
-              <div class ="d-flex justify-content-center ">
+            <div class = "card-product-bookings">
+              <div class="img-container">
                   <% if dev.photo.attached? %>
                     <%= cl_image_tag(dev.photo.key) %>
                   <% else %>
                     <img src="<%=dev.photo_url%>" alt="avatar">
                   <% end %>
+              </div>
+              <div class = "card-product-infos d-flex-column">
+                <div class='m-2 d-flex justify-content-center'>
+                  <%= dev.name %>
+                </div>
+                <div class='m-2'>
+                  <%= dev.skill%>
+                </div>
+                <div class='m-2'>
+                  <%= dev.address%>
+                </div>
+                <div class='m-2 d-flex justify-content-end'>
+                  <%= dev.price.to_i %> $/day
                 </div>
               </div>
-              <div class="d-flex justify-content-center p-3">
-                <%= dev.name %>
-              </div>
-            <div class="d-flex justify-content-center p-3">
-              <%= dev.skill%>
-            </div>
-             <div class="d-flex justify-content-center p-3">
-              <%= dev.address%>
-            </div>
-             <div class="d-flex justify-content-center p-3">
-              <%= dev.price.to_i %> $/day
             </div>
           <% end %>
         </div>
-      </div>
-    <% end %>
-  </div>
- 
+      <% end %>
     </div>
-    <div class="d-flex justify-content-center p-3">
-      <% if policy(Dev).new? %>
-        <div class="btn btn-gradient " >
-          <%= link_to "Add a new dev", new_dev_path, class:"btn-index" %>
-        </div>
-      <%end%>
-       </div>
-  <div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+    id='map'>
+    </div>
   </div>
 </div>

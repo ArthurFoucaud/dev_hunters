@@ -2,17 +2,17 @@
 <h1>this is index bookings</h1>
 <div class="container">
   <% @bookings.each do |booking| %>
-  <div class="card-product-bookings">
-      <img src="<%=booking.dev.photo_url%>"/>
-      <div class="card-product-infos">
-        <h3> <%= booking.dev.name %></h3>
-        <p> <%= booking.starting_time %></p>
-        <p> <%= booking.ending_time %></p>
-        <p> <%= booking.status_seller %> </p>
-        <p> Day price:<%= booking.dev.price %> € </p>
-        <%= button_to "delete this booking", dev_booking_path(booking.dev, booking), class: "btn btn-danger", method: :delete if policy(booking).destroy? %>
-      </div>
-  </div>
+    <div class="card-product-bookings">
+        <img src="<%=booking.dev.photo_url%>"/>
+        <div class="card-product-infos">
+          <h3> <%= booking.dev.name %></h3>
+          <p> <%= booking.starting_time %></p>
+          <p> <%= booking.ending_time %></p>
+          <p> <%= booking.status_seller %> </p>
+          <p> Day price:<%= booking.dev.price %> € </p>
+          <%= button_to "delete this booking", dev_booking_path(booking.dev, booking), class: "btn btn-danger", method: :delete if policy(booking).destroy? %>
+        </div>
+    </div>
   <%end %>
 
 </div>
