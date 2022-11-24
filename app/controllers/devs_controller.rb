@@ -3,13 +3,24 @@ class DevsController < ApplicationController
 
   def index
     @devs = policy_scope(Dev)
+    if params[:query].present?
+      sql_query = <<~SQL
+      devs.name  ILIKE :query
+      OR devs.skill ILIKE :query
+    SQL
+    @devs = Dev.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @devs
+    end
+
+
     @bookings = current_user.bookings
     @markers = @devs.map do |dev|
       if dev.photo.attached?
         image = "http://res.cloudinary.com/dvtfwl0rn/image/upload/c_fill,h_300,w_400/v1/development/#{dev.photo.key}"
       else
         image = dev.photo_url
-      end
+      end 
       {
         lat: dev.latitude,
         lng: dev.longitude,
@@ -72,6 +83,6 @@ class DevsController < ApplicationController
   end
 
   def dev_params
-    params.require(:dev).permit(:name, :skill, :photo_url, :available, :photo)
+    params.require(:dev).permit(:name, :skill, :photo_url, :available, :photo, :address, :price)
   end
 end

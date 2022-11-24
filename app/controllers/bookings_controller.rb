@@ -3,6 +3,14 @@ class BookingsController < ApplicationController
   before_action :set_dev, only: [:new, :create]
   def index
     @bookings = policy_scope(Booking)
+    @devs = Dev.all
+    @markers = @devs.geocoded.map do |dev|
+
+      {
+        lat: dev.latitude,
+        lng: dev.longitude
+      }
+    end
   end
 
   def new

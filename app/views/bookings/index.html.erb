@@ -1,20 +1,40 @@
 <%= render "shared/navbar" %>
-<h1>this is index bookings</h1>
 <div class="container">
+  <h1>This is index bookings</h1>
+  <%= form_with url: devs_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a dev"
+      %>
+      <%= submit_tag "Search", class: "btn btn-success" %>
+  <% end %>
+    <div class="col-6">
   <% @bookings.each do |booking| %>
-  <div class="card-product-bookings">
-      <img src="<%=booking.dev.photo_url%>"/>
-      <div class="card-product-infos">
-        <h3> <%= booking.dev.name %></h3>
-        <p> <%= booking.starting_time %></p>
-        <p> <%= booking.ending_time %></p>
-        <p> <%= booking.status_seller %> </p>
-        <p> Day price:<%= booking.dev.price %> € </p>
-        <%= button_to "delete this booking", dev_booking_path(booking.dev, booking), class: "btn btn-danger", method: :delete if policy(booking).destroy? %>
-      </div>
-  </div>
-  <%end %>
+      <section class="grid">
+        <article>
+            <div class="card-product-bookings">
+              <img src="<%=booking.dev.photo_url%>"/>
+              <div class="card-product-infos">
+                <h3> <%= booking.dev.name %></h3>
+                <p> <%= booking.starting_time %></p>
+                <p> <%= booking.ending_time %></p>
+                <p> <%= booking.status_seller %> </p>
+                <p> Day price:<%= booking.dev.price %> € </p>
+                <%= button_to "delete this booking", dev_booking_path(booking.dev, booking), class: "btn btn-danger", method: :delete if policy(booking).destroy? %>
+              </div>
+          </div>
+        </article>
+    </section>
+      <%end %>
+    </div>
 
+    <div style="width: 100%; height: 600px;"
+      data-controller="map"
+      data-map-markers-value="<%= @marker.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+      class="mb-5">
+    </div>
 </div>
 
 <%= link_to "Back to main index", devs_path%>

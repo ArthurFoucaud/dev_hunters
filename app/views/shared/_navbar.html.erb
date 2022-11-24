@@ -1,21 +1,48 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "/", class: "navbar-brand" do %>
-      <%= image_tag "logo1.png" %>
-    <% end %>
+    <div class="logo-plus-home d-flex">
+      <%= link_to "/", class: "navbar-brand" do %>
+        <%= image_tag "logo1.png" %>
+      <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <ul class="d-flex" style="
+    align-items: center;
+    margin: 0px;">
+                <li class="nav-item active">
             <%= link_to "Home", "/", class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to "All devs", "/devs", class: "nav-link" %>
+          <li class="nav-item" style="padding-left: 20px;">
+            <%= link_to "All devs", "/devs", class: "nav-link"%>
+          </li>
+      </ul>
+    </div>
+
+    <div class="collapse navbar-collapse"  id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
+
+              <li class="nav-item active">
+                <div class="font-search nav-link" data-controller="search" data-action="click->search#addSearch">
+                  <%# <%= link_to(:devs => 'search') do %>
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <%# <% end %>
+                  <div class="d-none" >
+                    <%= form_with url: devs_path, method: :get, class: "d-flex" do %>
+                      <%= text_field_tag :query,
+                        params[:query],
+                        class: "form-control",
+                        placeholder: "Find a dev"
+                      %>
+                      <%= submit_tag "Search", class: "btn btn-success" %>
+                    <% end %>
+                  </div>
+                </div>
+              </li>
+          <li class="nav-text" style="padding-left: 30px; padding-right: 10px;">
+          <%= current_user.email%>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "raph.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
