@@ -7,6 +7,7 @@
 @import "card_category";
 @import "img_container";
 @import "cards";
+@import "button";
 
 .footer-bot {
   min-height: calc(100vh - 50px);
@@ -18,3 +19,4 @@
   height: 80vh;
   position: sticky;
 }
+
