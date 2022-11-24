@@ -15,15 +15,12 @@ class DevsController < ApplicationController
 
     @markers = @devs.geocoded.map do |dev|
 
-    @markers = @devs.map do |dev|
-
       {
         lat: dev.latitude,
         lng: dev.longitude
       }
     end
     @bookings = current_user.bookings
-  end
   end
 
   def show
