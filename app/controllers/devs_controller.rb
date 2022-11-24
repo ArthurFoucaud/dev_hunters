@@ -3,6 +3,16 @@ class DevsController < ApplicationController
 
   def index
     @devs = policy_scope(Dev)
+    if params[:query].present?
+      sql_query = <<~SQL
+      devs.name  ILIKE :query
+      OR devs.skill ILIKE :query
+    SQL
+    @devs = Dev.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @devs
+    end
+
     @markers = @devs.geocoded.map do |dev|
       {
         lat: dev.latitude,
