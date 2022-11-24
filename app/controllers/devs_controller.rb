@@ -3,7 +3,6 @@ class DevsController < ApplicationController
 
   def index
     @devs = policy_scope(Dev)
-    
     if params[:query].present?
       sql_query = <<~SQL
       devs.name  ILIKE :query
@@ -23,8 +22,8 @@ class DevsController < ApplicationController
         lng: dev.longitude
       }
     end
-
     @bookings = current_user.bookings
+  end
   end
 
   def show
