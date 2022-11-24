@@ -1,14 +1,19 @@
-<h1>Do you want to book him ?</h1>
-<div data-controller="dynamic-booking-price"
-     data-dynamic-booking-price-price-value="<%= @dev.price %>">
-<%= simple_form_for [@dev, @booking],
+<%= render "shared/navbar" %>
+
+<div class="container">
+  <div class="col-4 offset-4 my-5 pb-5">
+  <h1>When would you want to book <%= @dev.name%>?</h1>
+  <br>
+    <div data-controller="dynamic-booking-price"
+     data-dynamic-booking-price-price-value="<%= @dev.price.to_i %>">
+    <%= simple_form_for [@dev, @booking],
                     html: {
                       data: {
                         controller: 'flatpickr'
                       }
                     } do |f| %>
-  <%# <%= f.input :content %>
-  <%= f.input :starting_time,
+      <%# <%= f.input :content %>
+      <%= f.input :starting_time,
                as: :string,
                input_html: {
                 data: {
@@ -32,4 +37,6 @@
     <!-- target the HTML tag that will display the dynamic price -->
     Total price: <span data-dynamic-booking-price-target="priceHolder"><%= @dev.price %></span> €
 </p>
+</div>
+</div>
 </div>

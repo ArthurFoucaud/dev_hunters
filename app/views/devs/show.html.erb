@@ -17,7 +17,7 @@
     <p>price: <%= @dev.price.to_i%> $ per day</p>
   </div>
   <div class="card-product-edit">
-  <%= link_to "Book this Dev", new_dev_booking_path(@dev), class: "btn-primary"  %>
+  <%= link_to "Book this Dev", new_dev_booking_path(@dev), class: "btn btn-success"  %>
     <% if policy(@dev).edit? %>
     <%= link_to "Edit this dev", edit_dev_path(@dev), class: "btn-primary" %>
   <% end %>
