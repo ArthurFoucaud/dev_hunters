@@ -5,15 +5,17 @@ class DevsController < ApplicationController
     @devs = policy_scope(Dev)
     if params[:query].present?
       sql_query = <<~SQL
-      devs.name  ILIKE :query
+      devs.name ILIKE :query
       OR devs.skill ILIKE :query
-    SQL
-    @devs = Dev.where(sql_query, query: "%#{params[:query]}%")
+      SQL
+      @devs = Dev.where(sql_query, query: "%#{params[:query]}%")
+    elsif params[:skill].present?
+      @devs = Dev.where(skill: params[:skill])
     else
       @devs
     end
 
-    @markers = @devs.geocoded.map do |dev|
+
 
     @markers = @devs.map do |dev|
 
@@ -23,8 +25,14 @@ class DevsController < ApplicationController
       }
     end
     @bookings = current_user.bookings
+
+
+
   end
-  end
+
+
+
+
 
   def show
     authorize @dev
