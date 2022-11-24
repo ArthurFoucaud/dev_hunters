@@ -1,69 +1,81 @@
 <%= render "shared/navbar" %>
 <body>
-  <div class="backgrounds">
+  <div class="m-3">
     <%= link_to "Back", devs_path, class: "btn-primary btn-sm" %>
   </div>
 
-  <div class="container">
-    <div class="card-product-bookings">
-      <% if @dev.photo.attached? %>
-      <%= cl_image_tag(@dev.photo.key, width: 400, height: 300, crop: :fill) %>
-    <% else %>
-      <img src="<%=@dev.photo_url%>" alt="avatar">
-    <% end %>
-      <div class="card-product-infos">
-        <h2>name: <%= @dev.name %></h2>
-        <p>skills: <%= @dev.skill%></p>
-        <p>price: <%= @dev.price.to_i%> $ per day</p>
-      </div>
-      <div class="card-product-edit">
-        <% if policy(@dev).edit? %>
-        <%= link_to "Edit this dev", edit_dev_path(@dev), class: "btn-primary" %>
-      <% end %>
-        <%= button_to "", @dev, class: "fa-regular fa-trash-can", method: :delete if policy(@dev).destroy? %>
-      </div>
+  <div class="container d-flex mb-3">
+    <div class='container-left w-50 m-3 p-5'>
+      <div class="card-product-bookings">
+        <div class="img-container">
+          <% if @dev.photo.attached? %>
+            <%= cl_image_tag(@dev.photo.key) %>
+          <% else %>
+            <img src="<%=@dev.photo_url%>" alt="avatar">
+          <% end %>
+        </div>
+        <div class = "card-product-infos d-flex-column">
+          <div class='m-2 d-flex justify-content-center'>
+            <h2><%= @dev.name %></h2>
+          </div>
+          <div class='m-2'>
+            <p><%= @dev.skill%></p>
+          </div>
+          <div class='m-2'>
+            <p><%= @dev.address%></p>
+          </div>
+          <div class='m-2 d-flex justify-content-end'>
+            <p><%= @dev.price.to_i %> $/day</p>
+          </div>
+        </div>
+        <div class="card-product-edit">
+          <% if policy(@dev).edit? %>
+          <%= link_to "Edit this dev", edit_dev_path(@dev), class: "btn-primary" %>
+        <% end %>
+          <%= button_to "", @dev, class: "fa-regular fa-trash-can", method: :delete if policy(@dev).destroy? %>
+        </div>
       </div>
 
-    <h3>Do you want to book him ?</h3>
-    <div data-controller="dynamic-booking-price"
-        data-dynamic-booking-price-price-value="<%= @dev.price %>">
-      <%= simple_form_for [@dev, @booking],
-                          html: {
-                            data: {
-                              controller: 'flatpickr'
-                            }
-                          } do |f| %>
-        <%# <%= f.input :content %>
-        <%= f.input :starting_time,
-                    as: :string,
-                    input_html: {
-                      data: {
-                        flatpickr_target: 'startDateInput',
-                        dynamic_booking_price_target: 'startDateInput',
-                        action: 'change->dynamic-booking-price#updatePrice'
-                      }
-                    }%>
-        <%= f.input :ending_time,
-                    as: :string,
-                    input_html: {
-                      data: {
-                        flatpickr_target: 'endDateInput',
-                        dynamic_booking_price_target: 'endDateInput',
-                        action: 'change->dynamic-booking-price#updatePrice'
-                      }
-                    } %>
-        <%= f.submit "validate", class: "btn btn-success" %>
-      <% end %>
-      <p>
-          <!-- target the HTML tag that will display the dynamic price -->
-          Total price: <span data-dynamic-booking-price-target="priceHolder"><%= @dev.price %></span> €
-      </p>
+      <h3>Do you want to book him ?</h3>
+      <div data-controller="dynamic-booking-price"
+          data-dynamic-booking-price-price-value="<%= @dev.price %>">
+        <%= simple_form_for [@dev, @booking],
+                            html: {
+                              data: {
+                                controller: 'flatpickr'
+                              }
+                            } do |f| %>
+          <%# <%= f.input :content %>
+          <%= f.input :starting_time,
+                      as: :string,
+                      input_html: {
+                        data: {
+                          flatpickr_target: 'startDateInput',
+                          dynamic_booking_price_target: 'startDateInput',
+                          action: 'change->dynamic-booking-price#updatePrice'
+                        }
+                      }%>
+          <%= f.input :ending_time,
+                      as: :string,
+                      input_html: {
+                        data: {
+                          flatpickr_target: 'endDateInput',
+                          dynamic_booking_price_target: 'endDateInput',
+                          action: 'change->dynamic-booking-price#updatePrice'
+                        }
+                      } %>
+          <%= f.submit "validate", class: "btn btn-success" %>
+        <% end %>
+        <p>
+            <!-- target the HTML tag that will display the dynamic price -->
+            Total price: <span data-dynamic-booking-price-target="priceHolder"><%= @dev.price %></span> €
+        </p>
+      </div>
     </div>
-    <div style="width: 100%; height: 600px;"
-    data-controller="map"
+    <div data-controller="map"
     data-map-markers-value="<%= @marker.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-    class="mb-5">
+    class="w-50 m-3" id=''>
     </div>
   </div>
 </body>
