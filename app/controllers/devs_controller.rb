@@ -79,6 +79,6 @@ class DevsController < ApplicationController
   end
 
   def dev_params
-    params.require(:dev).permit(:name, :skill, :photo_url, :available, :photo)
+    params.require(:dev).permit(:name, :skill, :photo_url, :available, :photo, :address, :price)
   end
 end
