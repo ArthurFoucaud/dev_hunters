@@ -15,15 +15,12 @@ class DevsController < ApplicationController
 
     @markers = @devs.geocoded.map do |dev|
 
-    @markers = @devs.map do |dev|
-
       {
         lat: dev.latitude,
         lng: dev.longitude
       }
     end
     @bookings = current_user.bookings
-  end
   end
 
   def show
@@ -79,6 +76,6 @@ class DevsController < ApplicationController
   end
 
   def dev_params
-    params.require(:dev).permit(:name, :skill, :photo_url, :available, :photo)
+    params.require(:dev).permit(:name, :skill, :photo_url, :available, :photo, :address, :price)
   end
 end
