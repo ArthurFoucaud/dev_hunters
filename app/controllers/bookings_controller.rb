@@ -3,6 +3,15 @@ class BookingsController < ApplicationController
   before_action :set_dev, only: [:new, :create]
   def index
     @bookings = policy_scope(Booking)
+    if params[:query].present?
+      sql_query = <<~SQL
+      devs.name  ILIKE :query
+      OR devs.skill ILIKE :query
+    SQL
+    @bookings = Booking.joins(:dev).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @bookings
+    end
     @devs = Dev.all
     @markers = @devs.geocoded.map do |dev|
 
