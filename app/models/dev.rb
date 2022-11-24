@@ -8,4 +8,12 @@ class Dev < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+  def self.search(keywords)
+    if keywords
+      where("name LIKE ? OR address LIKE ? OR skill LIKE ?", "%#{keywords}%", "%#{keywords}%", "%#{keywords}%").order('id DESC')
+    else
+      order('id DESC')
+    end
+  end
 end
