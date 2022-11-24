@@ -1,7 +1,7 @@
 <%= render "shared/navbar" %>
 <body>
   <div class="backgrounds">
-    <%= link_to "Back", devs_path, class: "btn-primary" %>
+    <%= link_to "Back", devs_path, class: "btn-primary btn-sm" %>
   </div>
 
   <div class="container">
@@ -20,7 +20,7 @@
         <% if policy(@dev).edit? %>
         <%= link_to "Edit this dev", edit_dev_path(@dev), class: "btn-primary" %>
       <% end %>
-        <%= button_to "Delete this Dev", @dev, class: "btn-delete", method: :delete if policy(@dev).destroy? %>
+        <%= button_to "", @dev, class: "fa-regular fa-trash-can", method: :delete if policy(@dev).destroy? %>
       </div>
       </div>
 

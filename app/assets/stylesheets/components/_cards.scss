@@ -51,6 +51,8 @@
   transition: background 0.3s ease;
   border: 1px solid rgba(20,19,70,1);
   font-family: 'JetBrains Mono', monospace;
+  position: relative;
+  top:10px;
 }
 
 .btn-primary:hover {
@@ -85,6 +87,7 @@
   align-items: center;
   max-height: 200px;
   margin: 20px auto;
+  position: relative;
 }
 
 .card-product-bookings img {
@@ -115,4 +118,14 @@
 }
 .backgrounds {
   background-color: #141346;
+}
+
+.fa-regular {
+  left: 60px;
+  top: -70px;
+  position: relative;
+  margin-left: 500px;
+  color: red;
+  background-color: white;
+  font-size: 35px;
 }
