@@ -1,12 +1,4 @@
 <%= render "shared/navbar" %>
-<%= form_with url: devs_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a dev"
-  %>
-  <%= submit_tag "Search", class: "btn btn-success" %>
-<% end %>
 
 
 <div class="main-container p-5">
