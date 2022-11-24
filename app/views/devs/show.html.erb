@@ -1,7 +1,7 @@
 <%= render "shared/navbar" %>
 <body>
   <div class="backgrounds">
-    <%= link_to "Back", devs_path, class: "btn-primary" %>
+    <%= link_to "Back", devs_path, class: "btn-primary btn-sm" %>
   </div>
 
   <div class="container">
@@ -20,7 +20,7 @@
         <% if policy(@dev).edit? %>
         <%= link_to "Edit this dev", edit_dev_path(@dev), class: "btn-primary" %>
       <% end %>
-        <%= button_to "Delete this Dev", @dev, class: "btn-delete", method: :delete if policy(@dev).destroy? %>
+        <%= button_to "", @dev, class: "fa-regular fa-trash-can", method: :delete if policy(@dev).destroy? %>
       </div>
       </div>
 
@@ -58,6 +58,12 @@
           <!-- target the HTML tag that will display the dynamic price -->
           Total price: <span data-dynamic-booking-price-target="priceHolder"><%= @dev.price %></span> €
       </p>
+    </div>
+    <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @marker.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+    class="mb-5">
     </div>
   </div>
 </body>

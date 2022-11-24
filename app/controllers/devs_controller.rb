@@ -3,6 +3,7 @@ class DevsController < ApplicationController
 
   def index
     @devs = policy_scope(Dev)
+    
     if params[:query].present?
       sql_query = <<~SQL
       devs.name  ILIKE :query
@@ -14,6 +15,9 @@ class DevsController < ApplicationController
     end
 
     @markers = @devs.geocoded.map do |dev|
+
+    @markers = @devs.map do |dev|
+
       {
         lat: dev.latitude,
         lng: dev.longitude
@@ -26,6 +30,11 @@ class DevsController < ApplicationController
   def show
     authorize @dev
     @booking = Booking.new
+
+    @marker = [{
+      lat: @dev.latitude,
+      lng: @dev.longitude
+    }]
   end
 
   def new

@@ -7,3 +7,16 @@
 @import "card_category";
 @import "img_container";
 @import "cards";
+@import "button";
+
+.footer-bot {
+  min-height: calc(100vh - 50px);
+}
+
+#map{
+  top: 10vh;
+  width: 100%;
+  height: 80vh;
+  position: sticky;
+}
+
