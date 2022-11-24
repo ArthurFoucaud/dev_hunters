@@ -17,21 +17,22 @@ class DevsController < ApplicationController
 
 
 
+    @bookings = current_user.bookings
     @markers = @devs.map do |dev|
-
+      if dev.photo.attached?
+        image = "http://res.cloudinary.com/dvtfwl0rn/image/upload/c_fill,h_300,w_400/v1/development/#{dev.photo.key}"
+      else
+        image = dev.photo_url
+      end 
       {
         lat: dev.latitude,
-        lng: dev.longitude
+        lng: dev.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {dev: dev}),
+        image_url: image
       }
     end
-    @bookings = current_user.bookings
-
-
 
   end
-
-
-
 
 
   def show
@@ -87,6 +88,6 @@ class DevsController < ApplicationController
   end
 
   def dev_params
-    params.require(:dev).permit(:name, :skill, :photo_url, :available, :photo)
+    params.require(:dev).permit(:name, :skill, :photo_url, :available, :photo, :address, :price)
   end
 end
