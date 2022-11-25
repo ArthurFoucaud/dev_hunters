@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-      <h3>Do you want to book him ?</h3>
+      <h3>Do you want to book <%= @dev.name %> ?</h3>
       <div data-controller="dynamic-booking-price"
           data-dynamic-booking-price-price-value="<%= @dev.price %>">
         <%= simple_form_for [@dev, @booking],
@@ -87,4 +87,17 @@
     class="w-50 m-3" id=''>
     </div>
   </div>
+  <% if policy(Review).new? %>
+    <%= simple_form_for([@dev, @review]) do |f| %>
+      <%= f.input :content %>
+      <%= f.submit :submit %>
+    <% end %>
+  <% end %>
+  <ul class="list-group">
+    <% @dev.reviews.each do |review| %>
+      <li class="list-group-item"><%= review.content %></li>
+      <%= button_to "Destroy this review", review_path(review), method: :delete  %>
+    <% end %>
+  </ul>
+  <%= link_to "Back to all devs", devs_path %>
 </body>

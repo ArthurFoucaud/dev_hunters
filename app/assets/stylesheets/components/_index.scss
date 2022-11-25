@@ -9,6 +9,8 @@
 @import "cards";
 @import "button";
 @import "grids";
+@import "address_autocomplete";
+@import "map";
 
 .footer-bot {
   min-height: calc(100vh - 50px);

@@ -11,15 +11,13 @@ class DevsController < ApplicationController
       SQL
       @devs = Dev.where(sql_query, query: "%#{params[:query]}%")
 
-      
+
     elsif params[:skill].present?
       @devs = Dev.where(skill: params[:skill])
 
     else
       @devs
     end
-
-
 
     @bookings = current_user.bookings
     @markers = @devs.map do |dev|
@@ -28,6 +26,7 @@ class DevsController < ApplicationController
       else
         image = dev.photo_url
       end
+
       {
         lat: dev.latitude,
         lng: dev.longitude,
@@ -35,18 +34,21 @@ class DevsController < ApplicationController
         image_url: image
       }
     end
-
   end
 
 
   def show
     authorize @dev
     @booking = Booking.new
+
+    @review = Review.new
+
     if @dev.photo.attached?
       image = "http://res.cloudinary.com/dvtfwl0rn/image/upload/c_fill,h_300,w_400/v1/development/#{@dev.photo.key}"
     else
       image = @dev.photo_url
     end
+
 
     @marker = [{
       lat: @dev.latitude,
