@@ -22,17 +22,11 @@
                   <h5><%= @dev.name %></h5>
                 </div>
                 <div class='m-2 d-flex justify-content-between'>
-                  <p>skills:</p>
-                  <p><%= @dev.skill%></p>
+                  <p> skills: <%= @dev.skill%></p>
                 </div>
                 <div class='m-2 d-flex justify-content-between'>
-                  <p>Address:</p>
-                  <p><%= @starting_time%></p>
-                  <p><%= @ending_time %></p>
                 </div>
-                <div class='mt-2 d-flex justify-content-end'>
-                  <h6 class='price text-success'><strong><%=  @price.to_i %> $/day</strong></h6>
-                </div>
+                  <p class='price text-success'><strong><%= @dev.price %> $/day</strong></p>
               </div>
             </div>
           </div>
