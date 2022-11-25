@@ -87,17 +87,24 @@
     class="w-50 m-3" id=''>
     </div>
   </div>
-  <% if policy(Review).new? %>
-    <%= simple_form_for([@dev, @review]) do |f| %>
-      <%= f.input :content %>
-      <%= f.submit :submit %>
-    <% end %>
-  <% end %>
-  <ul class="list-group">
-    <% @dev.reviews.each do |review| %>
-      <li class="list-group-item"><%= review.content %></li>
-      <%= button_to "Destroy this review", review_path(review), method: :delete  %>
-    <% end %>
-  </ul>
-  <%= link_to "Back to all devs", devs_path %>
+  <div class="d-flex justify-content-center my-5">
+    <div class="review-box w-50">
+      <% if policy(Review).new? %>
+        <%= simple_form_for([@dev, @review]) do |f| %>
+          <div class="d-flex justify-content-between align-items-center my-3">
+            <div class="w-100">
+              <%= f.input :content %>
+            </div>
+            <%= f.submit :submit, class:"btn btn-primary h-50" %>
+          </div>
+        <% end %>
+      <% end %>
+      <% @dev.reviews.each do |review| %>
+        <div class="d-flex justify-content-between mt-2">
+          <p><%= review.content %><p>
+          <%= button_to "Delete", review_path(review), method: :delete, class:"btn btn-flat"  %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </body>
