@@ -21,6 +21,7 @@ class DevsController < ApplicationController
 
 
 
+
     @bookings = current_user.bookings
     @markers = @devs.map do |dev|
       if dev.photo.attached?
@@ -28,6 +29,7 @@ class DevsController < ApplicationController
       else
         image = dev.photo_url
       end
+
       {
         lat: dev.latitude,
         lng: dev.longitude,
@@ -42,11 +44,15 @@ class DevsController < ApplicationController
   def show
     authorize @dev
     @booking = Booking.new
+
+    @review = Review.new
+
     if @dev.photo.attached?
       image = "http://res.cloudinary.com/dvtfwl0rn/image/upload/c_fill,h_300,w_400/v1/development/#{@dev.photo.key}"
     else
       image = @dev.photo_url
     end
+
 
     @marker = [{
       lat: @dev.latitude,
