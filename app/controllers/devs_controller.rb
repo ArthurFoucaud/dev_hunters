@@ -5,17 +5,19 @@ class DevsController < ApplicationController
     @devs = policy_scope(Dev)
     if params[:query].present?
       sql_query = <<~SQL
-      devs.name ILIKE :query
-      OR devs.skill ILIKE :query
+
+        devs.name  ILIKE :query
+        OR devs.skill ILIKE :query
       SQL
       @devs = Dev.where(sql_query, query: "%#{params[:query]}%")
+
+
     elsif params[:skill].present?
       @devs = Dev.where(skill: params[:skill])
+
     else
       @devs
     end
-
-
 
     @bookings = current_user.bookings
     @markers = @devs.map do |dev|
@@ -23,7 +25,8 @@ class DevsController < ApplicationController
         image = "http://res.cloudinary.com/dvtfwl0rn/image/upload/c_fill,h_300,w_400/v1/development/#{dev.photo.key}"
       else
         image = dev.photo_url
-      end 
+      end
+
       {
         lat: dev.latitude,
         lng: dev.longitude,
@@ -31,7 +34,6 @@ class DevsController < ApplicationController
         image_url: image
       }
     end
-
   end
 
 
@@ -39,9 +41,20 @@ class DevsController < ApplicationController
     authorize @dev
     @booking = Booking.new
 
+    @review = Review.new
+
+    if @dev.photo.attached?
+      image = "http://res.cloudinary.com/dvtfwl0rn/image/upload/c_fill,h_300,w_400/v1/development/#{@dev.photo.key}"
+    else
+      image = @dev.photo_url
+    end
+
+
     @marker = [{
       lat: @dev.latitude,
-      lng: @dev.longitude
+      lng: @dev.longitude,
+      info_window: render_to_string(partial: "info_window", locals: {dev: @dev}),
+      image_url: image
     }]
   end
 
