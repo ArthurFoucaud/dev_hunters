@@ -31,4 +31,11 @@ Dev.create(name: "Thibaut Roland", skill: "CSS", photo_url: "https://avatars.git
   62560", user: user1)
 Dev.create(name: "Gaspard Fauchille", skill: "C", photo_url: "https://avatars.githubusercontent.com/u/114876925?v=4", price: 60, address:"Roubaix
   59100", user: user)
+Dev.create(name: "Emeline Barthe", skill: "solidity", photo_url: "https://avatars.githubusercontent.com/u/115411698?v=4", price: 70, address:"Sevran", user: user)
+Dev.create(name: "Raphael Assaf(bg)", skill: "html", photo_url: "https://avatars.githubusercontent.com/u/115251007?v=4", price: 200, address:"Madrid", user: user)
+Dev.create(name: "Aaron Delabays", skill: "solidity", photo_url: "https://avatars.githubusercontent.com/u/115422001?v=4", price: 150, address:"20 rue houdon Paris", user: user)
+Dev.create(name: "Robin Rettien", skill: "Ruby, JS", photo_url: "https://avatars.githubusercontent.com/u/112618478?v=4", price: 2, address:"Rome", user: user)
+Dev.create(name: "Pauline Gouttiere", skill: "HTML, CSS", photo_url: "https://avatars.githubusercontent.com/u/106176972?v=4", price: 52, address:"Lisbonne", user: user)
+Dev.create(name: "Nicolaz Stacey", skill: "Ruby, JS", photo_url: "https://avatars.githubusercontent.com/u/74938003?v=4", price: 500, address:"Plymouth", user: user)
+Dev.create(name: "Gabriel de Monts", skill: "CSS", photo_url: "https://avatars.githubusercontent.com/u/113995804?v=4", price: 6, address:"Barcelone", user: user)
 puts "Seeds successfully seeded"
