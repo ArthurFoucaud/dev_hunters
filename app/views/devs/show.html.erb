@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-      <h3>Do you want to book him ?</h3>
+      <h3>Do you want to book <%= @dev.name %> ?</h3>
       <div data-controller="dynamic-booking-price"
           data-dynamic-booking-price-price-value="<%= @dev.price %>">
         <%= simple_form_for [@dev, @booking],
