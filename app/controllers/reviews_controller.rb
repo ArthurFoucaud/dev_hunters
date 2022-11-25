@@ -1,9 +1,11 @@
 class ReviewsController < ApplicationController
   before_action :set_dev, only: %i[new create]
+  before_action :set_review, only: %i[new create]
+
 
   def new
+    @review = Review.new(dev_id: @dev)
     authorize @review
-    @review = Review.new
   end
 
   def create
@@ -26,6 +28,10 @@ class ReviewsController < ApplicationController
   private
 
   def set_dev
+    @review = Review.new(dev_id: @dev)
+  end
+
+  def set_review
     @dev = Dev.find(params[:dev_id])
   end
 
