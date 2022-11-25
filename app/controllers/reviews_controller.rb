@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @dev.user = current_user
+    @review.user = current_user
     @review.dev = @dev
     authorize @review
     @review.save
