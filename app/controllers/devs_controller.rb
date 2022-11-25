@@ -12,11 +12,8 @@ class DevsController < ApplicationController
     else
       @devs
     end
-
     @markers = @devs.geocoded.map do |dev|
-
     @markers = @devs.map do |dev|
-
       {
         lat: dev.latitude,
         lng: dev.longitude
@@ -29,6 +26,7 @@ class DevsController < ApplicationController
   def show
     authorize @dev
     @booking = Booking.new
+    @review = Review.new
 
     @marker = [{
       lat: @dev.latitude,

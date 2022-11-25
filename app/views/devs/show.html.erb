@@ -66,4 +66,17 @@
     class="mb-5">
     </div>
   </div>
+  <% if policy(Review).new? %>
+    <%= simple_form_for([@dev, @review]) do |f| %>
+      <%= f.input :content %>
+      <%= f.submit :submit %>
+    <% end %>
+  <% end %>
+  <ul class="list-group">
+    <% @dev.reviews.each do |review| %>
+      <li class="list-group-item"><%= review.content %></li>
+      <%= button_to "Destroy this review", review_path(review), method: :delete  %>
+    <% end %>
+  </ul>
+  <%= link_to "Back to all devs", devs_path %>
 </body>

@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :devs do
     resources :bookings, only: [:new, :create, :destroy]
+    resources :reviews, only: [:new, :create]
   end
+  resources :reviews, only: :destroy
   resources :bookings, only: :index
   # Defines the root path route ("/")
   # root "articles#index"
