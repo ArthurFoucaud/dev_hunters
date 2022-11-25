@@ -11,15 +11,13 @@ class DevsController < ApplicationController
       SQL
       @devs = Dev.where(sql_query, query: "%#{params[:query]}%")
 
-      
+
     elsif params[:skill].present?
       @devs = Dev.where(skill: params[:skill])
 
     else
       @devs
     end
-
-
 
     @bookings = current_user.bookings
     @markers = @devs.map do |dev|
@@ -35,7 +33,6 @@ class DevsController < ApplicationController
         image_url: image
       }
     end
-
   end
 
 
