@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :devs
   has_many :bookings
+  has_many :booked_devs, through: :bookings, source: :dev
 
   # validates :username, presence: true, uniqueness: true
   # validates :password, presence: true

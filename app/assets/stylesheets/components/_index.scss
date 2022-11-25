@@ -8,6 +8,7 @@
 @import "img_container";
 @import "cards";
 @import "button";
+@import "grids";
 
 .footer-bot {
   min-height: calc(100vh - 50px);
@@ -20,3 +21,7 @@
   position: sticky;
 }
 
+body {
+  background-color: #2b2b2b;
+  color: white;
+}
