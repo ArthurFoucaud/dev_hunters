@@ -96,7 +96,7 @@
   <ul class="list-group">
     <% @dev.reviews.each do |review| %>
       <li class="list-group-item"><%= review.content %></li>
-      <%= button_to "Destroy this review", review_path(review), method: :delete  %>
+      <%= button_to "", review_path(review), class: "fa-regular fa-trash-can", method: :delete if policy(review).destroy? %>
     <% end %>
   </ul>
   <%= link_to "Back to all devs", devs_path %>
