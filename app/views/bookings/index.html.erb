@@ -23,12 +23,14 @@
               <p> <%= booking.status_seller %> </p>
               <p> Day price:<%= booking.dev.price %> € </p>
               <button>
-                <%= button_to "", @dev, class: "fa-regular fa-trash-can", method: :delete if policy(booking).destroy? %>
+                <%= link_to "", booking_path(booking), class: "fa-regular fa-trash-can", data: { turbo_method: :delete}%>
               </button>
             </div>
         </div>
       <%end %>
     </section>
+
+
 
     <div class="col-6 ms-3 mt-4">
         <div style="width: 100%; height: 600px;"
@@ -36,6 +38,7 @@
           data-map-markers-value="<%= @marker.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
+
     </div>
   </div>
 </div>

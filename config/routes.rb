@@ -4,10 +4,10 @@ Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :devs do
-    resources :bookings, only: [:new, :create, :destroy]
+    resources :bookings, only: [:new, :create]
   end
+
   resources :bookings, only: :index
   get "/dashboard", to: "pages#dashboard"
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :bookings, only: [:index, :destroy]
 end
