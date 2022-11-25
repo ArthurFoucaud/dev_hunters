@@ -2,33 +2,23 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: :destroy
   before_action :set_dev, only: [:new, :create]
   def index
-
-
-    @bookings = policy_scope(Booking)
+  @bookings = policy_scope(Booking)
     if params[:query].present?
       sql_query = <<~SQL
       devs.name  ILIKE :query
       OR devs.skill ILIKE :query
-    SQL
+      SQL
     @bookings = Booking.joins(:dev).where(sql_query, query: "%#{params[:query]}%")
     else
       @bookings
     end
 
     @user = current_user
-    @devs = Dev.where(user: current_user)
+    @devs = Dev.where(user_id: current_user.id)
     @devs.each do |d|
       @name = d.name
       @dev = d
     end
-
-    @dev.bookings.each do |booking|
-    @starting_time = booking.starting_time
-    @ending_time = booking.ending_time
-    @price = @dev.price
-    @statut = booking.status_seller
-    end
-
 
     @devs = current_user.booked_devs
     @markers = @devs.map do |dev|
