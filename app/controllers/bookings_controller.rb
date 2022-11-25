@@ -41,6 +41,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    raise
     authorize @booking
     @booking.destroy
     redirect_to bookings_path, status: :see_other

@@ -23,7 +23,7 @@
               <p> <%= booking.status_seller %> </p>
               <p> Day price:<%= booking.dev.price %> € </p>
               <button>
-                <%= button_to "", @dev, class: "fa-regular fa-trash-can", method: :delete if policy(booking).destroy? %>
+                <%= link_to "", booking_path(booking), class: "fa-regular fa-trash-can", method: :delete if policy(booking).destroy? %>
               </button>
             </div>
         </div>
