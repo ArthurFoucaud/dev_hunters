@@ -1,7 +1,7 @@
 <%= render "shared/navbar" %>
 <div class="container">
   <h1>This is index bookings</h1>
-  <%= form_with url: devs_path, method: :get, class: "d-flex" do %>
+  <%= form_with url: bookings_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
@@ -9,32 +9,40 @@
       %>
       <%= submit_tag "Search", class: "btn btn-success" %>
   <% end %>
-    <div class="col-6">
-  <% @bookings.each do |booking| %>
-      <section class="grid">
-        <article>
-            <div class="card-product-bookings">
-              <img src="<%=booking.dev.photo_url%>"/>
-              <div class="card-product-infos">
-                <h3> <%= booking.dev.name %></h3>
-                <p> <%= booking.starting_time %></p>
-                <p> <%= booking.ending_time %></p>
-                <p> <%= booking.status_seller %> </p>
-                <p> Day price:<%= booking.dev.price %> € </p>
-                <%= button_to "delete this booking", dev_booking_path(booking.dev, booking), class: "btn btn-danger", method: :delete if policy(booking).destroy? %>
-              </div>
-          </div>
-        </article>
-    </section>
-      <%end %>
-    </div>
 
-    <div style="width: 100%; height: 600px;"
-      data-controller="map"
-      data-map-markers-value="<%= @markers.to_json %>"
-      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-      class="mb-5">
+<div class="container ">
+  <div class="d-flex">
+    <section>
+      <% @bookings.each do |booking| %>
+        <div class="card-product-bookings d-flex">
+            <img src="<%=booking.dev.photo_url%>"/>
+            <div class="card-product-infos">
+              <h3> <%= booking.dev.name %></h3>
+              <p> <%= booking.starting_time %></p>
+              <p> <%= booking.ending_time %></p>
+              <p> <%= booking.status_seller %> </p>
+              <p> Day price:<%= booking.dev.price %> € </p>
+              <button>
+                <%= link_to "", booking_path(booking), class: "fa-regular fa-trash-can", data: { turbo_method: :delete}%>
+              </button>
+            </div>
+        </div>
+      <%end %>
+    </section>
+
+
+
+    <div class="col-6 ms-3 mt-4">
+        <div style="width: 100%; height: 600px;"
+          data-controller="map"
+          data-map-markers-value="<%= @marker.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+
     </div>
+  </div>
 </div>
+
+
 
 <%= link_to "Back to main index", devs_path%>

@@ -4,6 +4,17 @@ class BookingsController < ApplicationController
   def index
     @bookings = policy_scope(Booking)
 
+    if params[:query].present?
+      sql_query = <<~SQL
+      devs.name  ILIKE :query
+      OR devs.skill ILIKE :query
+    SQL
+    @bookings = Booking.joins(:dev).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @bookings
+    end
+    
+
     @devs = current_user.booked_devs
     @markers = @devs.map do |dev|
       if dev.photo.attached?
