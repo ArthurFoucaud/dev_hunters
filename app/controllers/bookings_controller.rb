@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
   before_action :set_dev, only: [:new, :create]
   def index
 
+
     @bookings = policy_scope(Booking)
     if params[:query].present?
       sql_query = <<~SQL
@@ -57,7 +58,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     authorize @booking
     if @booking.save
-      redirect_to dev_path(@dev)
+      redirect_to bookings_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -66,7 +67,7 @@ class BookingsController < ApplicationController
   def destroy
     authorize @booking
     @booking.destroy
-    redirect_to bookings_path, status: :see_other
+    redirect_to booking_path, status: :see_other
   end
 
   private
