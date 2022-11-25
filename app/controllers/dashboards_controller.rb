@@ -1,5 +1,5 @@
 class DashboardsController < ApplicationController
-  def dashboard
+  def index
     raise
     @bookings = policy_scope(Booking)
   end

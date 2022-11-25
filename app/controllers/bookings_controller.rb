@@ -2,8 +2,9 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: :destroy
   before_action :set_dev, only: [:new, :create]
   def index
-    @bookings = policy_scope(Booking)
 
+
+    @bookings = policy_scope(Booking)
     if params[:query].present?
       sql_query = <<~SQL
       devs.name  ILIKE :query
@@ -13,7 +14,21 @@ class BookingsController < ApplicationController
     else
       @bookings
     end
-    
+
+    @user = current_user
+    @devs = Dev.where(user: current_user)
+    @devs.each do |d|
+      @name = d.name
+      @dev = d
+    end
+
+    @dev.bookings.each do |booking|
+    @starting_time = booking.starting_time
+    @ending_time = booking.ending_time
+    @price = @dev.price
+    @statut = booking.status_seller
+    end
+
 
     @devs = current_user.booked_devs
     @markers = @devs.map do |dev|
@@ -43,7 +58,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     authorize @booking
     if @booking.save
-      redirect_to dev_path(@dev)
+      redirect_to bookings_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -52,7 +67,7 @@ class BookingsController < ApplicationController
   def destroy
     authorize @booking
     @booking.destroy
-    redirect_to bookings_path, status: :see_other
+    redirect_to booking_path, status: :see_other
   end
 
   private

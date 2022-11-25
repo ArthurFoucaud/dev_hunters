@@ -15,7 +15,7 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    user.booked_devs.include?(record.dev)
   end
 
   def destroy?

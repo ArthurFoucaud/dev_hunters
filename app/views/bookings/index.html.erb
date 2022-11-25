@@ -1,8 +1,46 @@
 <%= render "shared/navbar" %>
+
 <body>
-  <div class="m-3">
-    <%= link_to "Back", devs_path, class: "btn-primary btn-sm" %>
-  </div>
+<h5></h5>
+<div class='w-100'>
+
+      <div class="container d-flex">
+        <div class='container-left w-50 m-3'>
+        <div>
+        <h2>They have been booked:</h2>
+      </div>
+          <div class="card-product-bookings mt-5">
+            <div class="img-container">
+              <% if @dev.photo.attached? %>
+                <%= cl_image_tag(@dev.photo.key) %>
+              <% else %>
+                <img src="<%=@dev.photo_url%>" alt="avatar">
+              <% end %>
+            </div>
+              <div class = "card-product-infos d-flex-column">
+                <div class='m-2 d-flex justify-content-center'>
+                  <h5><%= @dev.name %></h5>
+                </div>
+                <div class='m-2 d-flex justify-content-between'>
+                  <p>skills:</p>
+                  <p><%= @dev.skill%></p>
+                </div>
+                <div class='m-2 d-flex justify-content-between'>
+                  <p>Address:</p>
+                  <p><%= @starting_time%></p>
+                  <p><%= @ending_time %></p>
+                </div>
+                <div class='mt-2 d-flex justify-content-end'>
+                  <h6 class='price text-success'><strong><%=  @price.to_i %> $/day</strong></h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
   <div class="main-container p-5">
     <div class=' m-3 px-4 d-flex justify-content-between'>
       <div>
@@ -20,6 +58,7 @@
                 %>
                 <%= submit_tag "Search", class: "btn btn-success" %>
             <% end %>
+
             </div>
         <%@bookings.each do |booking|%>
           <div class = 'col-12'>
@@ -39,7 +78,7 @@
                         <h5><%= booking.dev.name %></h5>
                       </div>
                       <div class="w-25 h-25">
-                        <%= button_to "", booking.dev, class: "fa-regular fa-trash-can", method: :delete if policy(booking.dev).destroy? %>
+                        <%= link_to "", booking_path(booking), class: "fa-regular fa-trash-can", data: {turbo_method: :delete} if policy(booking).destroy? %>
                       </div>
                     </div>
                     <div class='m-2 d-flex justify-content-between'>
@@ -66,4 +105,10 @@
       </div>
     </div>
   </div>
+
+</div>
+
+
+<%= link_to "Back to main index", devs_path%>
+
 </body>

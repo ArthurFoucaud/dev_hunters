@@ -14,6 +14,14 @@
       <%end%>
     </div>
   </div>
+  <div class ="m-3 px-4">
+    <%= form_tag(devs_path, method: :get) do %>
+      <%= select_tag :skill, options_for_select(Dev.all.collect{ |u| [u.skill] }) %>
+      <%#= collection_select :skill, :id, Dev.all.order('name ASC'), :id, :skill,{include_blank: 'Select coding language'} %>
+      <%= submit_tag 'Search', name: nil %>
+      <%= link_to "Reset", "/devs", class: "button"%>
+    <% end %>
+  </div>
   <div class = 'big-container d-flex'>
     <div class = 'container row w-50 m-3'>
       <%= form_tag(devs_path, method: :get, class: "pb-3") do %>
