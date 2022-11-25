@@ -41,7 +41,7 @@
                         <h5><%= booking.dev.name %></h5>
                       </div>
                       <div class="w-25 h-25">
-                        <%= button_to "", booking.dev, class: "fa-regular fa-trash-can", method: :delete if policy(booking.dev).destroy? %>
+                        <%= link_to "", booking_path(booking), class: "fa-regular fa-trash-can", method: :delete if policy(booking).destroy? %>
                       </div>
                     </div>
                     <div class='m-2 d-flex justify-content-between'>

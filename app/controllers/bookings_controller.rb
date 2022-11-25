@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
   before_action :set_dev, only: [:new, :create]
   def index
 
+
     @bookings = policy_scope(Booking)
     if params[:query].present?
       sql_query = <<~SQL
